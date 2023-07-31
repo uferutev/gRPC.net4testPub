@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC.net4test.Protos";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service ProductProtoService {
+  
+  rpc GetProducts (GetProductsRequest) returns (stream ProductModel);
+  rpc AddProduct (AddProductRequest) returns (ProductModel);
+  rpc GetMinMaxProducts (GetProductsRequest) returns (stream ProductModel);
+}
+	 
+
+message AddProductRequest {
+  ProductModel product = 1;
+}
+
+message GetProductsRequest {
+  ProductFilterModel filter = 1;
+}
+
+message ProductModel{
+	string createdTime = 1;
+	string name = 2;	
+	float speed = 3;
+}
+
+message ProductFilterModel{
+	string createdTime = 1;
+	float speed = 2 ;
+}
+
+ message ProductList{
+	 repeated ProductModel products =1;
+ }
+ message ProtoException{
+	int32 code = 1;
+	string message =2;
+ }
+
+  message ProtoStreamAnswer{
+	ProductModel product = 1;
+	ProtoException exp = 2;
+ }

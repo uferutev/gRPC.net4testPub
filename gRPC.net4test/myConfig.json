@@ -1,0 +1,5 @@
+{  
+  "dataPath": "D:\\data.txt", //not working to do (path in DataManager.cs)
+  "serviceStartTime": 8,
+  "serviceEndTime": 20
+}
