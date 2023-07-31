@@ -50,7 +50,7 @@ namespace gRPC.net4test.Data
 
         public async Task<Dictionary<DateTime, List<Product>>> SearchAllProducts(){ 
             var result = new Dictionary<DateTime, List<Product>>();
-            var products = new List<Product>(); //to do change to tree Tree<float, List<Product>> (speed, products)
+            var products = new List<Product>(); 
 
             
             var lines = (await File.ReadAllLinesAsync(path)).ToList();
@@ -109,7 +109,7 @@ namespace gRPC.net4test.Data
             return products.OrderBy(p => p.Speed).ToList();
         }
 
-        private int FirsIndexSearch(List<Product> products, float speed){ //re do to bs
+        private int FirsIndexSearch(List<Product> products, float speed){ 
             var i = 0;
             for(i =0; i < products.Count; i++){
                 if (products[i].Speed > speed) {
